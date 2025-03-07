@@ -1,0 +1,34 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Pemesanan extends Model
+{
+    use HasFactory;
+    protected $fillable = [
+        'user_id', 
+        'wisata_id', 
+        'tanggal_kunjungan', 
+        'jumlah_tiket', 
+        'total_harga', 
+        'status', 
+        'qr_code'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function wisata()
+    {
+        return $this->belongsTo(Wisata::class);
+    }
+
+    public function checkin()
+    {
+        return $this->hasOne(Checkin::class);
+    }
+}
