@@ -50,6 +50,15 @@ $items = [
     @endif
 </div>
 
+<!-- Tombol untuk masuk ke halaman Trello (diletakkan di kiri) -->
+<div class="row mt-4">
+    <div class="col-lg-3">
+        <a href="{{ route('trello.index') }}" class="btn btn-primary btn-block">
+            <i class="fas fa-tasks"></i>Task Pegawai
+        </a>
+    </div>
+</div>
+
     <div class="row">
       <div class="col-xl-8 col-lg-7">
         <div class="card shadow mb-4">
