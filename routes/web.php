@@ -6,7 +6,11 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TrelloController;
+use App\Http\Controllers\ForgotPasswordController; // Add this line
+
 use App\Http\Controllers\TaskController; // Tambahkan ini
+use App\Http\Controllers\OrderController; // Add OrderController
+use App\Http\Controllers\VerificationController; // Add VerificationController
 
 Route::get('/', function () {
     return view('home');
@@ -48,15 +52,43 @@ Route::middleware('auth')->group(function () {
         Route::delete('destroy/{id}', 'destroy')->name('categories.destroy');
     });
 
-    // Tambahkan route untuk tugas
-    Route::controller(TaskController::class)->prefix('tasks')->group(function () {
-        Route::get('', 'index')->name('tasks.index'); // Untuk menampilkan tugas
-        Route::post('store', 'store')->name('tasks.store'); // Untuk menyimpan tugas
-        Route::put('edit/{id}', 'update')->name('tasks.update'); // Untuk mengupdate tugas
-        Route::delete('destroy/{id}', 'destroy')->name('tasks.destroy'); // Untuk menghapus tugas
+    // Add routes for orders
+    Route::controller(OrderController::class)->prefix('orders')->group(function () {
+        Route::get('', 'index')->name('orders.index'); // To display orders
+        Route::get('create', 'create')->name('orders.create'); // To create an order
+        Route::post('store', 'store')->name('orders.store'); // To store an order
+        Route::get('show/{id}', 'show')->name('orders.show'); // To show an order
+        Route::get('edit/{id}', 'edit')->name('orders.edit'); // To edit an order
+        Route::put('edit/{id}', 'update')->name('orders.update'); // To update an order
+        Route::delete('destroy/{id}', 'destroy')->name('orders.destroy'); // To delete an order
+    });
+
+    // Add routes for verifications
+    Route::controller(VerificationController::class)->prefix('verifications')->group(function () {
+        Route::get('', 'index')->name('verifications.index'); // To display verifications
+        Route::get('create', 'create')->name('verifications.create'); // To create a verification
+        Route::post('store', 'store')->name('verifications.store'); // To store a verification
+        Route::get('show/{id}', 'show')->name('verifications.show'); // To show a verification
+        Route::get('edit/{id}', 'edit')->name('verifications.edit'); // To edit a verification
+        Route::put('edit/{id}', 'update')->name('verifications.update'); // To update a verification
+        Route::delete('destroy/{id}', 'destroy')->name('verifications.destroy'); // To delete a verification
     });
 
     Route::get('/profile', [AuthController::class, 'profile'])->name('profile');
 });
 
-Route::get('/trello', [TrelloController::class, 'index'])->name('trello.index');
+// Password Reset Routes
+Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])
+    ->name('password.request');
+Route::post('password/update', [ForgotPasswordController::class, 'updatePassword'])
+    ->name('password.update');
+
+    Route::controller(TaskController::class)->prefix('tasks')->group(function () {
+        Route::get('', 'index')->name('tasks.index'); // To display tasks
+        Route::post('store', 'store')->name('tasks.store'); // To store a task
+    });
+
+    Route::get('/trello', [TrelloController::class, 'index'])->name('trello.index');
+
+
+?>

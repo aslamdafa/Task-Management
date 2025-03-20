@@ -28,6 +28,22 @@
       <i class="fas fa-fw fa-layer-group"></i>
       <span>Kategori</span></a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{ route('orders.index') }}">
+      <i class="fas fa-fw fa-layer-group"></i>
+      <span>orders</span></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{ route('verifications.index') }}">
+      <i class="fas fa-fw fa-layer-group"></i>
+      <span>Verivications</span></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{ route('trello.index') }}">
+      <i class="fas fa-fw fa-layer-group"></i>
+      <span>Pegawai</span></a>
+  </li>
+
   
   <li class="nav-item">
     <a class="nav-link" href="/profile">

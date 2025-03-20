@@ -31,6 +31,8 @@
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Selamat Datang!</h1>
                   </div>
+                  <div class="text-center">
+                    <a class="small" href="{{ route('password.request') }}">Lupa Password?</a>
                   <form action="{{ route('login.action') }}" method="POST" class="user">
                     @csrf
                     @if ($errors->any())

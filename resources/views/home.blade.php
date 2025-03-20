@@ -75,6 +75,7 @@
                     <!-- para  -->
                     <p class="lead px-lg-8 mb-6">Selamat datang di platform manajemen stok barang. Semoga berkah Ramadhan menyertai kita semua!</p>
                     <a href="/dashboard" class="btn btn-primary">Masuk ke Dashboard</a>
+                    <a href="/orders.index" class="btn btn-primary mt-3">Ayo Belanja</a> <!-- New button for orders, direct access -->
                 </div>
             </div>
         </div>
