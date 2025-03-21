@@ -1,5 +1,9 @@
 <?php
+
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -12,7 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             \Database\Seeders\CategoriesTableSeeder::class,
             \Database\Seeders\ProductsTableSeeder::class,
+            AdminSeeder::class, // Menambahkan AdminSeeder di sini
         ]);
     }
 }
-// jalankan di terminal => php artisan db:seed 

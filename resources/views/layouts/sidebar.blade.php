@@ -5,7 +5,7 @@
     <div class="sidebar-brand-icon rotate-n-15">
       <i class="fas fa-store"></i>
     </div>
-    <div class="sidebar-brand-text mx-3">Ramadhan mart</div>
+    <div class="sidebar-brand-text mx-3">Ramadhan Mart</div>
   </a>
   
   <!-- Divider -->
@@ -15,40 +15,51 @@
   <li class="nav-item">
     <a class="nav-link" href="{{ route('dashboard') }}">
       <i class="fas fa-fw fa-chart-line"></i>
-      <span>Dashboard</span></a>
+      <span>Dashboard</span>
+    </a>
   </li>
-  
-  <li class="nav-item">
-    <a class="nav-link" href="{{ route('products') }}">
-      <i class="fas fa-fw fa-box"></i>
-      <span>Produk</span></a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="{{ route('categories') }}">
-      <i class="fas fa-fw fa-layer-group"></i>
-      <span>Kategori</span></a>
-  </li>
+
+  @if (auth()->user()->level === 'Admin')
+    <!-- Rute Admin -->
+    <li class="nav-item">
+      <a class="nav-link" href="{{ route('products') }}">
+        <i class="fas fa-fw fa-box"></i>
+        <span>Produk</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{ route('categories') }}">
+        <i class="fas fa-fw fa-layer-group"></i>
+        <span>Kategori</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{ route('verifications.index') }}">
+        <i class="fas fa-fw fa-check"></i>
+        <span>Verifikasi</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{ route('trello.index') }}">
+        <i class="fas fa-fw fa-users"></i>
+        <span>Pegawai</span>
+      </a>
+    </li>
+  @endif
+
+  <!-- Rute untuk Semua Pengguna -->
   <li class="nav-item">
     <a class="nav-link" href="{{ route('orders.index') }}">
       <i class="fas fa-fw fa-layer-group"></i>
-      <span>orders</span></a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="{{ route('verifications.index') }}">
-      <i class="fas fa-fw fa-layer-group"></i>
-      <span>Verivications</span></a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="{{ route('trello.index') }}">
-      <i class="fas fa-fw fa-layer-group"></i>
-      <span>Pegawai</span></a>
+      <span>Pesanan</span>
+    </a>
   </li>
 
-  
   <li class="nav-item">
-    <a class="nav-link" href="/profile">
+    <a class="nav-link" href="{{ route('profile') }}">
       <i class="fas fa-fw fa-user-alt"></i>
-      <span>Profil</span></a>
+      <span>Profil</span>
+    </a>
   </li>
   
   <!-- Divider -->
@@ -58,6 +69,5 @@
   <div class="text-center d-none d-md-inline">
     <button class="rounded-circle border-0" id="sidebarToggle"></button>
   </div>
-  
   
 </ul>
